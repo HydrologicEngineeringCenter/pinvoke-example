@@ -1,8 +1,6 @@
 #ifndef SAMPLE_H
 #define SAMPLE_H
 
-#include <comutil.h>
-
-extern "C" __declspec(dllexport) BSTR ReturnHello();
+extern "C" __declspec(dllexport) int Add(int a, int b);
 
 #endif // !SAMPLE_H

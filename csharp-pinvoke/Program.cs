@@ -7,7 +7,7 @@ namespace csharp_pinvoke
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(SampleWrapper.ReturnHello());
+            Console.WriteLine(SampleWrapper.Add(1, 2));
         }
     }
 }

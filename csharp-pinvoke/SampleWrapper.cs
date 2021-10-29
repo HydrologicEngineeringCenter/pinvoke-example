@@ -11,7 +11,6 @@ namespace csharp_pinvoke
     public class SampleWrapper
     {
         [DllImport(@"C:\Projects\pinvoke-example\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string ReturnHello();
+        public static extern int Add(int a, int b);
     }
 }

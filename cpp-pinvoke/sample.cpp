@@ -2,6 +2,6 @@
 #include "sample.h"
 
 
-BSTR ReturnHello() {
-	return ::SysAllocString(L"Hello!");
+int Add(int a, int b) {
+	return a + b;
 }
