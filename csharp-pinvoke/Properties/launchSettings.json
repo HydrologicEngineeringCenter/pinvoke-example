@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "csharp-pinvoke": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
