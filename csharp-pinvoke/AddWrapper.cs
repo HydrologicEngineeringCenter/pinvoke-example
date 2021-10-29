@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace csharp_pinvoke
 {
     
-    public class SampleWrapper
+    public class AddWrapper
     {
         [DllImport(@"C:\Projects\pinvoke-example\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
-        public static extern int Add(int a, int b);
+        public static extern int add(int a, int b);
     }
 }
