@@ -1,4 +1,4 @@
 #pragma once
 
-extern "C" __declspec(dllexport) int add(int a, int b);
+extern "C" int add(int a, int b);
 
