@@ -20,7 +20,7 @@ namespace csharp_pinvoke_tests
         }
 
         [TestMethod]
-        public void TestStringInputAndReturn()
+        public void TestArrayInputAndReturn()
         {
             int[] arr = new int[10];
             ArraysWrapper.fillArrayWithVals(arr, arr.Length);
@@ -28,6 +28,16 @@ namespace csharp_pinvoke_tests
             {
                 Assert.AreEqual(arr[i], i);
             }
+        }
+
+        [TestMethod]
+        public void TestExampleClass()
+        {
+            ExampleClassWrapper ec = new ExampleClassWrapper(21, "example", new int[] { 1, 2, 3 });
+            Assert.AreEqual(ec.Num, 21);
+            Assert.AreEqual(ec.Word, "example");
+            // TODO: treat array same as string, manually allocate memory for the individual elements.
+            Assert.AreEqual(ec.Nums, new int[] { 1, 2, 3 });
         }
     }
 }
