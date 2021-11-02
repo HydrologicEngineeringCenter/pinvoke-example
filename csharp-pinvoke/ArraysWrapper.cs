@@ -5,15 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
-
 namespace csharp_pinvoke
 {
-    public class StringWrapper
+    public class ArraysWrapper
     {
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string getHelloString(); 
-
-
+        public static extern int fillArrayWithVals(int[] arr, int length);
     }
 }
