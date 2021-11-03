@@ -39,5 +39,22 @@ namespace csharp_pinvoke_tests
             Assert.AreEqual(ec.Word, "example");
             Assert.IsTrue(Enumerable.SequenceEqual(ec.Nums, new int[] { 1, 2, 3 }));
         }
+
+        [TestMethod]
+        public void MemoryLeakTest()
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                int num = 21;
+                string word = "example";
+                int[] arr = new int[] { 1, 2, 3, 4, 5 };
+                using (ExampleClassWrapper ec = new ExampleClassWrapper(num, word, arr))
+                {
+                    Assert.AreEqual(ec.Num, num);
+                    Assert.AreEqual(ec.Word, word);
+                    Assert.IsTrue(Enumerable.SequenceEqual(ec.Nums, arr));
+                }
+            }
+        }
     }
 }

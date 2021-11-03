@@ -27,10 +27,11 @@ void ExampleClass::initializeNum(int num)
 
 void ExampleClass::initializeWord(char* word)
 {
-	this->word = (char*)malloc(strlen(word) + 1);
-	if (this->word != NULL) {
-		this->word = _strdup(word);
-	}
+	this->word = _strdup(word);
+	//if (this->word != NULL) {
+	//	strcpy(this->word, word);
+	//	//this->word = _strdup(word);
+	//}
 }
 
 void ExampleClass::initializeNums(int* nums, int nums_length)
