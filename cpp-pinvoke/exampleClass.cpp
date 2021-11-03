@@ -68,3 +68,8 @@ extern "C" int getNumsLength(ExampleClass * ec)
 {
 	return ec->nums_length;
 }
+
+extern "C" void freeExampleClass(ExampleClass * ec)
+{
+	ec->~ExampleClass();
+}

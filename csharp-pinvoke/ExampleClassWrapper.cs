@@ -21,6 +21,8 @@ namespace csharp_pinvoke
         private static extern IntPtr getNums(IntPtr ec);
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
         private static extern int getNumsLength(IntPtr ec);
+        [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
+        private static extern void freeExampleClass(IntPtr ec);
 
         public int Num 
         {
@@ -56,7 +58,7 @@ namespace csharp_pinvoke
         
         ~ExampleClassWrapper()
         {
-            // TODO: Free unmanaged arrays
+            freeExampleClass(ExampleClassObject);
         }
     }
 }

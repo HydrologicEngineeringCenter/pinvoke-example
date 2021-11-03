@@ -23,4 +23,5 @@ extern "C" {
 	__declspec(dllexport) BSTR getWord(ExampleClass* ec);
 	__declspec(dllexport) int* getNums(ExampleClass* ec);
 	__declspec(dllexport) int getNumsLength(ExampleClass* ec);
+	__declspec(dllexport) void freeExampleClass(ExampleClass* ec);
 }
