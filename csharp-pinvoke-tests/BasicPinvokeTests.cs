@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using csharp_pinvoke;
+using System.Linq;
 
 namespace csharp_pinvoke_tests
 {
@@ -36,8 +37,7 @@ namespace csharp_pinvoke_tests
             ExampleClassWrapper ec = new ExampleClassWrapper(21, "example", new int[] { 1, 2, 3 });
             Assert.AreEqual(ec.Num, 21);
             Assert.AreEqual(ec.Word, "example");
-            // TODO: treat array same as string, manually allocate memory for the individual elements.
-            Assert.AreEqual(ec.Nums, new int[] { 1, 2, 3 });
+            Assert.IsTrue(Enumerable.SequenceEqual(ec.Nums, new int[] { 1, 2, 3 }));
         }
     }
 }

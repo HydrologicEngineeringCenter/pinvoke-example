@@ -11,14 +11,16 @@ namespace csharp_pinvoke
     {
         private IntPtr ExampleClassObject;
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
-        private static extern IntPtr createExampleClass(int num, string word, int[] nums);
+        private static extern IntPtr createExampleClass(int num, string word, int[] nums, int numsLength);
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
         private static extern int getNum(IntPtr ec);
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
         [return: MarshalAs(UnmanagedType.BStr)]
         private static extern string getWord(IntPtr ec);
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
-        private static extern int[] getNums(IntPtr ec);
+        private static extern IntPtr getNums(IntPtr ec);
+        [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
+        private static extern int getNumsLength(IntPtr ec);
 
         public int Num 
         {
@@ -38,14 +40,23 @@ namespace csharp_pinvoke
         {
             get
             {
-                return getNums(ExampleClassObject);
+                int size = getNumsLength(ExampleClassObject);
+                int[] returnArray = new int[size];
+                IntPtr array = getNums(ExampleClassObject);
+                Marshal.Copy(array, returnArray, 0, size);
+                return returnArray;
             }
         }
 
 
         public ExampleClassWrapper(int num, string word, int[] nums)
         {
-            ExampleClassObject = createExampleClass(num, word, nums);
+            ExampleClassObject = createExampleClass(num, word, nums, nums.Length);
+        }
+        
+        ~ExampleClassWrapper()
+        {
+            // TODO: Free unmanaged arrays
         }
     }
 }
