@@ -10,6 +10,16 @@ ExampleClass::ExampleClass(int num, char* word, int* nums, int nums_length) {
 	initializeNums(nums, nums_length);
 }
 
+ExampleClass::~ExampleClass()
+{
+	if (this->word)
+		free(this->word);
+	if (this->nums) {
+		free(this->nums);
+	}
+	free(this);
+}
+
 void ExampleClass::initializeNum(int num)
 {
 	this->num = num;

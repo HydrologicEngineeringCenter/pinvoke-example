@@ -9,6 +9,7 @@ class ExampleClass {
 		int* nums;
 		int nums_length;
 		ExampleClass(int num, char* string, int* nums, int nums_length);
+		~ExampleClass();
 
 	private:
 		void initializeNum(int num);
