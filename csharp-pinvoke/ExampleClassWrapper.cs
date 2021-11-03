@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace csharp_pinvoke
 {
-    public class ExampleClassWrapper : IDisposable
+    public class ExampleClassWrapper
     {
         private IntPtr ExampleClassObject;
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
@@ -23,11 +23,6 @@ namespace csharp_pinvoke
         private static extern int getNumsLength(IntPtr ec);
         [DllImport(@"..\..\..\..\cpp-pinvoke\x64\Debug\cpp-pinvoke")]
         private static extern void freeExampleClass(IntPtr ec);
-
-        public void Dispose()
-        {
-            freeExampleClass(ExampleClassObject);
-        }
 
         public int Num 
         {
@@ -60,10 +55,10 @@ namespace csharp_pinvoke
         {
             ExampleClassObject = createExampleClass(num, word, nums, nums.Length);
         }
-        
-        //~ExampleClassWrapper()
-        //{
-        //    freeExampleClass(ExampleClassObject);
-        //}
+
+        ~ExampleClassWrapper()
+        {
+            freeExampleClass(ExampleClassObject);
+        }
     }
 }
